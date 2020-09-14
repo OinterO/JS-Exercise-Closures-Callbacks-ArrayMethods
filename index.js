@@ -27,11 +27,13 @@ function processFirstItem(stringList, callback) {
  * Study the code for counter1 and counter2. Answer the questions below.
  * 
  * 1. What is the difference between counter1 and counter2?
+ * let count is outside of the the function so its global scope and the other is local
  * 
  * 2. Which of the two uses a closure? How can you tell?
+ * counter one uses a closure because all functions are closures, according to the youtube video i watched. in order to call a function a closurem, the called variable should be present in an outer function rather than just a global scope variable
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
- *
+ *the first is if you want to have that function for just counting, the other is global so that other functions can use it
 */
 
 // counter1 code
@@ -56,12 +58,11 @@ function counter2() {
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
-
-    /*Code Here*/
-
+function inning(min, max) {
+  min = Math.ceil(0);
+  max = Math.floor(3);
+  return Math.floor(Math.random() * (max - min) + min); //The maximum is exclusive and the minimum is inclusive
 }
-
 /* Task 3: finalScore()
 
 Write a higher order function called `finalScore` that accepts the callback function `inning` (from above) and a number of innings and and returns the final score of the game in the form of an object.
@@ -75,12 +76,14 @@ finalScore(inning, 9) might return:
 }
 
 */ 
+const One = "Home";
+const Two = "Away";
 
-function finalScore(/*code Here*/){
-
-  /*Code Here*/
-
+function finalScore(a, b){
+return a(inning);
 }
+console.log(finalScore(inning, 9));
+
 
 /* Task 4: 
 
@@ -104,8 +107,16 @@ and returns the score at each pont in the game, like so:
 
 Final Score: awayTeam - homeTeam */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(InningScore, inning, num) {
+let awayTeam = 0;
+let homeTeam = 0;
+
+for (i =0; i < inning, num; i++){
+  InningScore = `${i} inning: ${awayTeam} - ${homeTeam}- homeTeam `
+  console.log(InningScore);
+  awayTeam = awayTeam + inning();
+  homeTeam = homeTeam + inning();
+}
 }
 
-
+scoreboard(InningScore, inning, 9)
